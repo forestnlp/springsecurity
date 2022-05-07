@@ -8,6 +8,6 @@
         from t_user where username = #{userName}
     </select>
     <select id="selectAllRoleByUserId" resultType="String">
-        select r.name from t_role_user u,t_role r where r.id = u.rid and u.uid=#{userId};
+        select r.name as name from t_role_user u,t_role r where r.id = u.rid and u.uid=#{userId};
     </select>
 </mapper>
