@@ -11,8 +11,7 @@
         select r.name as name from t_role_user u,t_role r where r.id = u.rid and u.uid=#{userId};
     </select>
     <select id="selectPermissionsByUserId" resultType="String">
-        SELECT permission FROM
-                              t_role r,t_role_user u,t_role_menu rm,t_menu m
+        SELECT permission FROM t_role r,t_role_user u,t_role_menu rm,t_menu m
         where r.id = u.uid and rm.mid = m.id and u.rid =rm.rid and u.uid=#{userId}
     </select>
 </mapper>

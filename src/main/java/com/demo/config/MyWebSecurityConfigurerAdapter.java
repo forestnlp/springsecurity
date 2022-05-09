@@ -1,14 +1,17 @@
 package com.demo.config;
 
 import com.demo.exception.MyAccessDeniedHandler;
+import com.demo.security.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +24,11 @@ public class MyWebSecurityConfigurerAdapter  extends WebSecurityConfigurerAdapte
     @Autowired
     private MyAccessDeniedHandler accessDeniedHandler;
 
+    @Autowired
+    private PersistentTokenRepository persistentTokenRepository;
+
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().
@@ -70,6 +78,12 @@ public class MyWebSecurityConfigurerAdapter  extends WebSecurityConfigurerAdapte
                 //只适用于非前端框架，适用于同步请求的方式
                 //如果是异步请求需要使用上一种方式。
                 .accessDeniedPage("/showAccessDenied");
+
+        http.rememberMe()
+            .userDetailsService(userDetailsService)
+            .tokenRepository(persistentTokenRepository)
+            .tokenValiditySeconds(10*2);
+
         http.csrf().disable();
     }
 }

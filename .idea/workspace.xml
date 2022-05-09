@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ac87602-6871-4d18-8ae0-93bd773c8a9f" name="变更" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/service/MyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/service/impl/MyServiceImpl.java" afterDir="false" />
+    <list default="true" id="0ac87602-6871-4d18-8ae0-93bd773c8a9f" name="变更" comment="注解">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/config/RememberMeConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/SpringSecurity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/config/MyWebSecurityConfigurerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/config/MyWebSecurityConfigurerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/security/service/impl/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/security/service/impl/UserDetailsServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +132,7 @@
       <updated>1651901877161</updated>
       <workItem from="1651901878601" duration="10254000" />
       <workItem from="1652056747020" duration="121000" />
-      <workItem from="1652062837566" duration="3764000" />
+      <workItem from="1652062837566" duration="6490000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1651916044121</created>
@@ -144,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651916044121</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="注解">
+      <created>1652067788795</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652067788795</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +167,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="注解" />
+    <option name="LAST_COMMIT_MESSAGE" value="注解" />
   </component>
 </project>
