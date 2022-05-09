@@ -50,16 +50,19 @@ public class MyWebSecurityConfigurerAdapter  extends WebSecurityConfigurerAdapte
                 .passwordParameter("mypassword")
                 ;
 
-        http.authorizeRequests().antMatchers("/showLogin","/showFail")
-                .permitAll()
+        http.authorizeRequests()
+                //.antMatchers("/showLogin","/showFail").permitAll()
+                .antMatchers("/showLogin","/showFail").access("permitAll")
                 //对于静态和动态请求需要分开
                 //.antMatchers("/js/**").permitAll()
                 .antMatchers("/abc").denyAll()
-                .antMatchers("/jczl").hasAnyAuthority("jczl","admin")
+                .antMatchers("/jczl").hasAnyAuthority("demo:update")
                 //.antMatchers("/jczl").hasAnyRole("ADMIN")
+                .antMatchers("/admin").access("@myServiceImpl.hasPermission(request,authentication)")
                 .antMatchers("/ip").hasIpAddress("192.168.7.86")
                 .antMatchers("/images/**").permitAll()
                 .regexMatchers("/js/.*").permitAll()
+                .antMatchers("/demo").permitAll()
                 .anyRequest().authenticated();
 
         http.exceptionHandling()

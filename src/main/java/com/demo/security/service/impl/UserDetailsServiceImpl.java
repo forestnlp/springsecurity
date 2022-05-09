@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
@@ -23,10 +25,24 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         com.demo.entity.User user = userMapper.selectByUserName(s);
-        if(user==null){
+        if (user == null) {
             throw new UsernameNotFoundException("用户不存在");
         }
-        UserDetails userDetails = new User(user.getUserName(), user.getPassword(),AuthorityUtils.commaSeparatedStringToAuthorityList("jczl,admin2,ROLE_ADMIN"));
+
+        List<String> roles = userMapper.selectAllRoleByUserId(user.getId());
+        List<String> permissions = userMapper.selectPermissionsByUserId(user.getId());
+
+        StringBuilder sb = new StringBuilder();
+        for (String role : roles) {
+            sb.append("ROLE_" + role + ",");
+        }
+        for (String permission : permissions) {
+            sb.append(permission + ",");
+        }
+
+        String rolepermission = sb.substring(0, sb.length() - 1);
+
+        UserDetails userDetails = new User(user.getUserName(), user.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList(rolepermission));
         return userDetails;
     }
 }
